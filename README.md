@@ -7,7 +7,10 @@ to be retrained with the same cadence, necessitating an end-to-end pipeline that
 In this project you will build such a pipeline.
 
 ## Project URL
+wandb
 https://wandb.ai/prasannapanta820-prasanna/nyc_airbnb?nw=nwuserprasannapanta820
+
+Github
 https://github.com/prasannapanta820/Project-Build-an-ML-Pipeline-Starter
 
 ## Table of contents
