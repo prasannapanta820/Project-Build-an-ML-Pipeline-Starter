@@ -13,6 +13,24 @@ https://wandb.ai/prasannapanta820-prasanna/nyc_airbnb?nw=nwuserprasannapanta820
 Github
 https://github.com/prasannapanta820/Project-Build-an-ML-Pipeline-Starter
 
+## Hyperparameter sweep and model selection
+The training step logs its model as the W&B artifact `model_export` (an MLflow sklearn model).
+The sweep values are defined under `hydra.sweeper.params` in `config.yaml`
+(`max_depth` = 10, 25, 50 × `n_estimators` = 100, 200 → 6 runs). Run it with:
+
+```bash
+mlflow run . -P steps=train_random_forest -P hydra_options="--multirun"
+```
+
+The run with the lowest validation MAE was tagged `prod` on its `model_export` artifact, and the latest
+`clean_sample.csv` was tagged `reference` for the data check. Evidence screenshots from my W&B account
+(`prasannapanta820-prasanna`) are in `images/`:
+
+- `images/wandb-tag-data-test.png` – `reference` alias on `clean_sample.csv`
+- `images/wandb_select_best.png` – sweep runs sorted by MAE (best: `playful-dew-23`) and the `prod` alias on `model_export:v3`
+- `images/wandb-model-export.png` – `model_export` artifact contents (MLflow sklearn model)
+- `images/wandb-pipeline-graph.png` – pipeline graph view (lineage of `model_export:prod`)
+
 ## Table of contents
 
 - [Preliminary steps](#preliminary-steps)

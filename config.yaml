@@ -36,3 +36,10 @@ modeling:
     max_features: 0.5
     # DO not change the following
     oob_score: true
+# Hyperparameter sweep (used only when the pipeline is launched with --multirun).
+# 3 x 2 = 6 training runs with different hyperparameters, each logged to W&B.
+hydra:
+  sweeper:
+    params:
+      modeling.random_forest.max_depth: 10,25,50
+      modeling.random_forest.n_estimators: 100,200
